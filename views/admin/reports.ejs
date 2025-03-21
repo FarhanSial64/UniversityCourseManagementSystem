@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Reports</title>
+    <link rel="stylesheet" href="/css/reports.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Student Management</h1>
+        <div class="header-buttons">
+            <a href="/admin/adminDashboard" class="back-btn">Back to Dashboard</a>
+            <a href="/auth/login" class="logout-btn">Logout</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="title-bar">
+            <h2>Admin Reports</h2>
+        </div>
+
+        <div class="report-section">
+            <h3>Students Registered for a Specific Course</h3>
+            <label for="courseSelect">Select Course:</label>
+            <select id="courseSelect">
+                <% courses.forEach(course => { %>
+                    <option value="<%= course._id %>"><%= course.courseCode %> - <%= course.title %></option>
+                <% }); %>
+            </select>
+            <button onclick="fetchStudents()">View Registered Students</button>
+            <div id="studentsTable"></div>
+        </div>
+
+        <div class="report-section">
+            <h3>Courses with Available Seats</h3>
+            <button onclick="fetchAvailableCourses()">View Courses with Available Seats</button>
+            <div id="availableCoursesTable"></div>
+        </div>
+
+        <div class="report-section">
+            <h3>Course Prerequisites</h3>
+            <button onclick="fetchCoursePrereqs()">View Course Prerequisites</button>
+            <div id="coursePrereqsTable"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Course Registration System. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/reports.js">
+        
+    </script>
+</body>
+</html>
